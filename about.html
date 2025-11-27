@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Marianne Calimquim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'flower-pink': '#FFB6C1',
+                        'flower-green': '#90EE90',
+                        'flower-purple': '#DDA0DD',
+                        'flower-yellow': '#FFE4B5',
+                        'leaf-green': '#228B22',
+                        'soil-brown': '#8B4513'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'bloom': 'bloom 2s ease-out forwards',
+                        'sway': 'sway 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        bloom: {
+                            '0%': { transform: 'scale(0)', opacity: '0' },
+                            '50%': { transform: 'scale(1.1)', opacity: '0.8' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        sway: {
+                            '0%, 100%': { transform: 'rotate(-2deg)' },
+                            '50%': { transform: 'rotate(2deg)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .petal {
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 100%);
+            border-radius: 0 100% 0 100%;
+            position: absolute;
+        }
+        .flower-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+        .petal:nth-child(1) { transform: rotate(0deg); }
+        .petal:nth-child(2) { transform: rotate(72deg); }
+        .petal:nth-child(3) { transform: rotate(144deg); }
+        .petal:nth-child(4) { transform: rotate(216deg); }
+        .petal:nth-child(5) { transform: rotate(288deg); }
+        html { scroll-behavior: smooth; }
+        .garden-pattern {
+            background-image:
+                radial-gradient(circle at 20% 50%, rgb(255, 182, 193) 0%, transparent 10%),
+                radial-gradient(circle at 80% 80%, rgb(144, 238, 144) 0%, transparent 10%),
+                radial-gradient(circle at 40% 20%, rgb(221, 160, 221) 0%, transparent 10%);
+        }
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 via-white to-pink-50 min-h-screen garden-pattern">
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+        <div class="container mx-auto px-3 py-1">
+            <div class="flex justify-between items-center h-12">
+                <div class="flex items-center space-x-1">
+                    <div class="flower-container scale-40 -ml-2" style="width:32px;height:32px;">
+                        <div class="petal w-5 h-5"></div>
+                        <div class="petal w-5 h-5"></div>
+                        <div class="petal w-5 h-5"></div>
+                        <div class="petal w-5 h-5"></div>
+                        <div class="petal w-5 h-5"></div>
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-flower-yellow rounded-full"></div>
+                    </div>
+                    <span class="text-base font-bold text-leaf-green">Marianne Calimquim</span>
+                </div>
+                <ul class="flex space-x-2">
+                    <li><a href="about.html" class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1 font-semibold text-leaf-green">About Me</a></li>
+                    <li><a href="education.html" class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1">Educational Attainment</a></li>
+                    <li><a href="achievements.html" class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1">Achievements</a></li>
+                    <li><a href="family.html" class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1">My Family</a></li>
+                    <li><a href="blockmates.html" class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1">My Batchmates</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="relative min-h-screen pt-16">
+        <section id="about" class="flex items-center justify-center min-h-[80vh]">
+            <div class="w-full max-w-4xl mx-auto flex flex-col md:flex-row items-center bg-white/80 rounded-xl shadow-lg p-8 gap-8">
+
+                <div class="flex-1 flex flex-col justify-center items-start">
+                    <h1 class="text-4xl mt-4 md:text-4xl font-extrabold text-leaf-green mb-2">Hello, I'm Marianne</h1>
+                    <p class="text-lg mt-8 text-justify mb-4" style="font-family: 'Georgia', Times, serif, sans-serif; color: rgb(64, 64, 64);">
+                        I’m Marianne Calimquim, a first-year Computer Science student from Baguio City, with a growing interest in machine learning and web development.
+                    </p>
+                    <p class="text-lg text-justify mb-4" style="font-family: 'Georgia', Times, serif, sans-serif; color: rgb(64, 64, 64);">
+                        I approach technology with clarity and purpose, combining analytical thinking with creativity to design solutions that make a meaningful impact.
+                    </p>
+                    <p class="text-lg text-justify mb-4" style="font-family: 'Georgia', Times, serif, sans-serif; color: rgb(64, 64, 64);">
+                        I’m passionate about continuous learning, refining my skills, and building systems that bridge innovation with real-world use.
+                    </p>
+                </div>
+
+                <div class="flex-1 flex justify-center items-center">
+                    <div class="w-72 h-72 rounded-full border-8 border-flower-pink overflow-hidden shadow-lg flex items-center justify-center bg-white">
+                        <img src="images/NEON_0631.00-removebg-preview.png" alt="Marianne Calimquim" class="object-cover w-full h-full">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="fixed right-8 bottom-8">
+            <a href="education.html">
+              <button class="page-nav-btn bg-leaf-green text-white px-4 py-2 rounded-full hover:bg-leaf-green/80 transition" id="next-achievements">Next</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Marianne Calimquim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'flower-pink': '#FFB6C1',
+                        'flower-green': '#90EE90',
+                        'flower-purple': '#DDA0DD',
+                        'flower-yellow': '#FFE4B5',
+                        'leaf-green': '#228B22',
+                        'soil-brown': '#8B4513'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'bloom': 'bloom 2s ease-out forwards',
+                        'sway': 'sway 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        bloom: {
+                            '0%': { transform: 'scale(0)', opacity: '0' },
+                            '50%': { transform: 'scale(1.1)', opacity: '0.8' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        sway: {
+                            '0%, 100%': { transform: 'rotate(-2deg)' },
+                            '50%': { transform: 'rotate(2deg)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .petal {
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 100%);
+            border-radius: 0 100% 0 100%;
+            position: absolute;
+        }
+        .flower-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+        .petal:nth-child(1) { transform: rotate(0deg); }
+        .petal:nth-child(2) { transform: rotate(72deg); }
+        .petal:nth-child(3) { transform: rotate(144deg); }
+        .petal:nth-child(4) { transform: rotate(216deg); }
+        .petal:nth-child(5) { transform: rotate(288deg); }
+        html { scroll-behavior: smooth; }
+        
+        /* The .garden-pattern CSS block has been removed */
+
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 via-white to-pink-50 min-h-screen">
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+        <div class="container mx-auto px-3 py-1">
+            <div class="flex justify-between items-center h-12">
+                <div class="flex items-center space-x-1">
+                    <div class="flower-container scale-40 -ml-2" style="width:32px;height:32px;">
+                        <div class="petal w-5 h-5"></div>
+                        <div class="petal w-5 h-5"></div>
+                        <div class="petal w-5 h-5"></div>
+                        <div class="petal w-5 h-5"></div>
+                        <div class="petal w-5 h-5"></div>
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-flower-yellow rounded-full"></div>
+                    </div>
+                    <span class="text-base font-bold text-leaf-green">Marianne Calimquim</span>
+                </div>
+                <ul class="flex space-x-2">
+                    <li><button class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1" data-page="about">About Me</button></li>
+                    <li><button class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1" data-page="education">Educational Attainment</button></li>
+                    <li><button class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1" data-page="achievements">Achievements</button></li>
+                    <li><button class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1" data-page="family">My Family</button></li>
+                    <li><button class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1" data-page="blockmates">My Batchmates</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="section-container" class="relative min-h-screen pt-16">
+        </div>
+    
+    <script>
+        // Dynamic section loading logic
+        const pageOrder = ['about', 'education', 'achievements', 'family', 'blockmates'];
+        const navBtns = document.querySelectorAll('.nav-btn');
+        const sectionContainer = document.getElementById('section-container');
+        
+        function loadSection(pageId) {
+            fetch(pageId + '.html')
+                .then(res => res.text())
+                .then(html => {
+                    // Inject the content of the HTML file into the container
+                    sectionContainer.innerHTML = html;
+                    setupPageNav(pageId);
+                });
+        }
+        
+        function setupPageNav(pageId) {
+            const idx = pageOrder.indexOf(pageId);
+            // Uses the ID of the current page to find its specific navigation buttons
+            const prevBtn = document.getElementById('prev-' + pageId);
+            const nextBtn = document.getElementById('next-' + pageId);
+            
+            // Re-apply active state to the top navigation button after page load
+            setActiveNavButton(pageId);
+
+            if (prevBtn) {
+                // Disable if it's the first page
+                prevBtn.disabled = idx === 0;
+                prevBtn.onclick = () => {
+                    if (idx > 0) loadSection(pageOrder[idx - 1]);
+                };
+            }
+            if (nextBtn) {
+                // Disable if it's the last page
+                nextBtn.disabled = idx === pageOrder.length - 1;
+                nextBtn.onclick = () => {
+                    if (idx < pageOrder.length - 1) loadSection(pageOrder[idx + 1]);
+                };
+            }
+        }
+        
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                loadSection(btn.getAttribute('data-page'));
+            });
+        });
+        
+        // Function to find the button for the current page and apply active styling
+        function setActiveNavButton(pageId) {
+            navBtns.forEach(b => {
+                if (b.getAttribute('data-page') === pageId) {
+                    b.classList.add('font-semibold', 'text-leaf-green');
+                    b.classList.remove('text-gray-700');
+                } else {
+                    b.classList.remove('font-semibold', 'text-leaf-green');
+                    b.classList.add('text-gray-700');
+                }
+            });
+        }
+
+        // Load About section by default and set the active style
+        const defaultPage = 'about';
+        loadSection(defaultPage); 
+    </script>
+</body>
+</html>

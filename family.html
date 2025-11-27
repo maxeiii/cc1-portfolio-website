@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family | Marianne Calimquim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'flower-pink': '#FFB6C1',
+                        'flower-green': '#90EE90',
+                        'flower-purple': '#DDA0DD',
+                        'flower-yellow': '#FFE4B5',
+                        'leaf-green': '#228B22',
+                        'soil-brown': '#8B4513'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'bloom': 'bloom 2s ease-out forwards',
+                        'sway': 'sway 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        bloom: {
+                            '0%': { transform: 'scale(0)', opacity: '0' },
+                            '50%': { transform: 'scale(1.1)', opacity: '0.8' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        sway: {
+                            '0%, 100%': { transform: 'rotate(-2deg)' },
+                            '50%': { transform: 'rotate(2deg)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .petal {
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 100%);
+            border-radius: 0 100% 0 100%;
+            position: absolute;
+        }
+        .flower-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+        .petal:nth-child(1) { transform: rotate(0deg); }
+        .petal:nth-child(2) { transform: rotate(72deg); }
+        .petal:nth-child(3) { transform: rotate(144deg); }
+        .petal:nth-child(4) { transform: rotate(216deg); }
+        .petal:nth-child(5) { transform: rotate(288deg); }
+        html { scroll-behavior: smooth; }
+        .garden-pattern {
+            background-image:
+                radial-gradient(circle at 20% 50%, rgb(255, 182, 193) 0%, transparent 10%),
+                radial-gradient(circle at 80% 80%, rgb(144, 238, 144) 0%, transparent 10%),
+                radial-gradient(circle at 40% 20%, rgb(221, 160, 221) 0%, transparent 10%);
+        }
+        body {
+            /* Ensures no scrolling */
+            overflow: hidden;
+        }
+        /* Styling for large, rectangular photo frames (Height: 250px) */
+        .rectangular-photo-container {
+            width: 100%; 
+            height: 250px; /* Confirmed rectangular height */
+            border-radius: 8px; 
+            overflow: hidden; 
+            /* *** MAXIMUM INCREASED GAP HERE (2.5rem) *** */
+            margin: 0 auto 2.5rem auto; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+            transition: transform 0.2s ease-in-out;
+            position: relative; 
+        }
+        .rectangular-photo-container:hover {
+            transform: scale(1.02); 
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 via-white to-pink-50 min-h-screen garden-pattern">
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+        <div class="container mx-auto px-3 py-1">
+            <div class="flex justify-between items-center h-12">
+                <div class="flex items-center space-x-1">
+                    <div class="flower-container scale-40 -ml-2" style="width:32px;height:32px;">
+                        <div class="petal w-5 h-5"></div>
+                        <div class="petal w-5 h-5"></div>
+                        <div class="petal w-5 h-5"></div>
+                        <div class="petal w-5 h-5"></div>
+                        <div class="petal w-5 h-5"></div>
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-flower-yellow rounded-full"></div>
+                    </div>
+                    <span class="text-base font-bold text-leaf-green">Marianne Calimquim</span>
+                </div>
+                <ul class="flex space-x-2">
+                    <li><a href="about.html" class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1">About Me</a></li>
+                    <li><a href="education.html" class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1">Educational Attainment</a></li>
+                    <li><a href="achievements.html" class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1">Achievements</a></li>
+                    <li><a href="family.html" class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1 font-semibold text-leaf-green">My Family</a></li>
+                    <li><a href="blockmates.html" class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1">My Batchmates</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="relative min-h-screen pt-14 flex items-start justify-center">
+        <section id="family" class="page-section w-full">
+            <div class="container mx-auto px-6 mt-2 pb-20"> 
+                <h2 class="text-4xl font-bold text-center text-gray-800 mt-8 mb-10">My Family</h2> 
+
+                <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-20"> 
+                    
+                    <div class="text-center p-1"> 
+                        <div class="rectangular-photo-container border-flower-pink">
+                            <img src="images/photo with papa (1).jpg" alt="Photo with father" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl font-bold text-leaf-green mb-4">My Father</h3>
+                        <p class="text-gray-600 text-m px-1">
+                            My top supporter and a good example of silent strength. He works hard to provide for our family.  
+                        </p>
+                    </div>
+
+                    <div class="text-center p-1">
+                        <div class="rectangular-photo-container border-flower-green">
+                            <img src="images/photo with mama.jpg" alt="Photo with mother" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl font-bold text-leaf-green mb-4">My Mother</h3>
+                        <p class="text-gray-600 text-m px-1">
+                            The kindest soul and also my greatest supporter. She is a role model of hard work and integrity.
+                        </p>
+                    </div>
+
+                    <div class="text-center p-1">
+                        <div class="rectangular-photo-container border-flower-purple">
+                            <img src="images/photo with atebien (1).jpg" alt="Photo with sister" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl font-bold text-leaf-green mb-4">My Sister</h3>
+                        <p class="text-gray-600 text-m px-1">
+                            A steady presence and a quiet source of laughter, she’s always there even from afar.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="fixed left-8 bottom-8">
+                <a href="achievements.html">
+                <button class="page-nav-btn bg-leaf-green text-white px-4 py-2 rounded-full hover:bg-leaf-green/80 transition" id="prev-family">Previous</button>
+                </a>
+            </div>
+
+             <div class="fixed right-8 bottom-8">
+                <a href="blockmates.html">
+              <button class="page-nav-btn bg-leaf-green text-white px-4 py-2 rounded-full hover:bg-leaf-green/80 transition" id="next-blockmates">Next</button>
+                </a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

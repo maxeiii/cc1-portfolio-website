@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Attainment | Marianne Calimquim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    // Custom colors from the original config
+                    colors: {
+                        'flower-pink': '#FFB6C1', // Light Pink
+                        'flower-green': '#90EE90', // Light Green
+                        'flower-purple': '#DDA0DD', // Light Purple
+                        'flower-yellow': '#FFE4B5',
+                        'leaf-green': '#228B22', 
+                        'soil-brown': '#8B4513',
+                        // ADJUSTED COLORS
+                        'background-light-green': '#E9F5E9', 
+                        'background-light-pink': '#FFF0F5', 
+                        'content-brown': '#A0522D', 
+                        'nav-text': '#374151', 
+                        'primary-accent': '#6EE7B7', 
+                        // Added a dark text color for contrast
+                        'dark-text': '#333333', 
+                    },
+                    // Keeping animations
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'bloom': 'bloom 2s ease-out forwards',
+                        'sway': 'sway 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        bloom: {
+                            '0%': { transform: 'scale(0)', opacity: '0' },
+                            '50%': { transform: 'scale(1.1)', opacity: '0.8' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        sway: {
+                            '0%, 100%': { transform: 'rotate(-2deg)' },
+                            '50%': { transform: 'rotate(2deg)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Styles for the flower in the navbar (kept from original) */
+        .petal {
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 100%);
+            border-radius: 0 100% 0 100%;
+            position: absolute;
+        }
+        .flower-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+        .petal:nth-child(1) { transform: rotate(0deg); }
+        .petal:nth-child(2) { transform: rotate(72deg); }
+        .petal:nth-child(3) { transform: rotate(144deg); }
+        .petal:nth-child(4) { transform: rotate(216deg); }
+        .petal:nth-child(5) { transform: rotate(288deg); }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            overflow-x: hidden; 
+        }
+
+        /* Utility class for all emblem containers */
+        .emblem-container {
+            /* Circular container */
+            border-width: 6px;
+            border-style: solid;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            /* UPDATED: Increased size from 100px to 120px */
+            width: 250px; 
+            height: 250px;
+            overflow: hidden; 
+        }
+        
+        /* --- Individual Border Colors --- */
+        /* Tertiary - Pink */
+        .emblem-tertiary {
+            border-color: #b5702780; /* flower-yellow gold */
+        }
+
+        /* Secondary - Green */
+        .emblem-secondary {
+            border-color: #b5702780; /* flower-yellow gold */
+        }
+
+        /* Primary - Purple */
+        .emblem-primary {
+            border-color: #b5702780; /* flower-yellow gold */
+        }
+        /* ------------------------------------- */
+
+        /* Style for the image inside the container to make it fit */
+        .emblem-container img {
+            max-width: 150%;
+            max-height: 150%;
+            object-fit: contain;
+        }
+
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50/50 via-white to-pink-50/50 min-h-screen"> 
+    
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+        <div class="container mx-auto px-3 py-1">
+            <div class="flex justify-between items-center h-12">
+                <div class="flex items-center space-x-1">
+                    <div class="flower-container scale-40 -ml-2" style="width:32px;height:32px;">
+                        <div class="petal w-5 h-5"></div>
+                        <div class="petal w-5 h-5"></div>
+                        <div class="petal w-5 h-5"></div>
+                        <div class="petal w-5 h-5"></div>
+                        <div class="petal w-5 h-5"></div>
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-flower-yellow rounded-full"></div>
+                    </div>
+                    <span class="text-base font-bold text-green-700">Marianne Calimquim</span>
+                </div>
+                <ul class="flex space-x-2">
+                    <li><a href="about.html" class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1">About Me</a></li>
+                    <li><a href="education.html" class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1 font-semibold text-leaf-green">Educational Attainment</a></li>
+                    <li><a href="achievements.html" class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1">Achievements</a></li>
+                    <li><a href="family.html" class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1">My Family</a></li>
+                    <li><a href="blockmates.html" class="nav-btn text-sm text-gray-700 hover:text-leaf-green transition px-2 py-1">My Batchmates</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="relative min-h-screen pt-24">
+        <section id="education" class="page-section">
+            <div class="container mx-auto px-6 max-w-6xl"> 
+                
+                <div> 
+                    
+                    <h2 class="text-4xl font-bold text-center text-dark-text mb-14">Educational Attainment</h2>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-30">
+                        
+                        <div class="text-center">
+                            <h3 class="font-bold text-xl text-dark-text mb-6">Tertiary</h3>
+                            <div class="flex justify-center mb-4">
+                                <div class="emblem-container emblem-tertiary">
+                                    <img src="images/uc-bcf.png" alt="University of the Cordilleras Logo" class="object-cover w-full h-full">
+                                </div>
+                            </div>
+                            <h4 class="font-normal text-xl text-gray-800">University of the Cordilleras</h4>
+                            
+                            <div class="w-4/5 mx-auto h-px bg-content-brown mb-3 mt-2"></div>
+                            
+
+                            <p class="text-base text-gray-700 font-semibold">Bachelor of Science in Computer Science</p>
+                            <p class="text-base text-gray-700">Present</p>
+                        </div>
+
+                        <div class="text-center">
+                            <h3 class="font-bold text-xl text-dark-text mb-6">Secondary</h3>
+                            <div class="flex justify-center mb-4">
+                                <div class="emblem-container emblem-secondary">
+                                    <img src="images/HOPE.png" alt="H.O.P.E. Christian Academy Inc. Secondary Logo" class="object-cover w-full h-full">
+                                </div>
+                            </div>
+                            <h4 class="font-normal text-xl text-gray-800">H.O.P.E. Christian Academy Inc.</h4>
+
+                            <div class="w-4/5 mx-auto h-px bg-content-brown mb-3 mt-2"></div>
+                            
+                            <p class="text-base text-gray-700 font-semibold">Science, Technology, Engineering, Math</p>
+                            <p class="text-base text-gray-700 font-semibold">(STEM) Strand</p>
+                            <p class="text-base text-gray-700">2018 - 2024</p>
+                        </div>
+
+                        <div class="text-center">
+                            <h3 class="font-bold text-xl text-dark-text mb-6">Primary</h3>
+                            <div class="flex justify-center mb-4">
+                                <div class="emblem-container emblem-primary">
+                                    <img src="images/HOPE.png" alt="H.O.P.E. Christian Academy Inc. Primary Logo" class="object-cover w-full h-full">
+                                </div>
+                            </div>
+                            <h4 class="font-normal text-xl text-gray-800">H.O.P.E. Christian Academy Inc.</h4>
+                            
+                            <div class="w-4/5 mx-auto h-px bg-content-brown mb-3 mt-2"></div>
+                            
+                            <p class="text-base text-gray-700">2012 - 2018</p>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            
+            <div class="fixed left-8 bottom-8">
+                <a href="about.html">
+              <button class="page-nav-btn bg-leaf-green text-white px-4 py-2 rounded-full hover:bg-leaf-green/80 transition" id="prev-education">Previous</button>
+                </a>
+            </div>
+            <div class="fixed right-8 bottom-8">
+                <a href="achievements.html">
+              <button class="page-nav-btn bg-leaf-green text-white px-4 py-2 rounded-full hover:bg-leaf-green/80 transition" id="next-education">Next</button>
+                </a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
